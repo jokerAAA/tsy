@@ -1,13 +1,14 @@
+const host = 'http://wx.tsy.com';
 let config = {
-    host:'wx.tsy.com',
     api:{
-        index:'/indexpage/index/index',
-        game:'/games/list/index',
+        host:'wx.tsy.com',
+        index:host+'/indexpage/index/index',
+        game:host+'/games/list/index',
         goods:{
-            data:'/trades/list/index',
-            list:'/trades/list/indexpager',
-            area:'/trades/list/getarealist',
-            detail:'/trades/list/info'
+            data:host+'/trades/list/index',
+            list:host+'/trades/list/indexpager',
+            area:host+'/trades/list/getarealist',
+            detail:host+'/trades/list/info'
         }
     }
 }

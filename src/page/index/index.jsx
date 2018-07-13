@@ -1,12 +1,32 @@
 import React,{Component} from "react";
+import axios from '../../utils/axios';
+
+import config from '../../utils/api';
+
+const indexApi = config.api.index;
 
 export default class Index extends Component {
     constructor() {
-        super(this);
+        super();
+        this.init();
+    }
+
+    init() {
+        this.getData();
     }
 
     getData() {
-        
+        axios({
+            url:indexApi,
+            method:'get',
+            data:{
+                a:1
+            },
+
+        })
+        .then(function(res) {
+            console.log(res)
+        })
     }
 
     render() {
