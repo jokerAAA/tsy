@@ -91,5 +91,12 @@
   },
   "eslintConfig": {
     "extends": "react-app"
+  },
+  "proxy" : {
+    "/api" : {
+      "target" : "http://cdt0-wxmn.taoshouyou.com" ,
+      "changeOrigin" : true
+    }
   }
+  
 }
