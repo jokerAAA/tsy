@@ -9,13 +9,26 @@ export default class Gamelist extends Component {
             letterArr : [] ,
             gameArr : [] ,
             letter : 'hot' ,
-            goodsid : 1
+            goodsid : 1 ,
+            scrollHeight : 600
         }
         this.init();
     }
 
     init() {
-        this.getData()
+        this.getData();
+        
+    }
+
+    componentDidMount() {
+        this.setHeight();
+    }
+
+    setHeight() {
+        let height = window.screen.height - 30 ;
+        this.setState({
+            scrollHeight: height
+        })
     }
 
     getData() {
@@ -39,11 +52,24 @@ export default class Gamelist extends Component {
     }
 
     render() {
+        let letterDom = this.state.letterArr.length > 0 && this.state.letterArr.map((value)=>
+        <div key={value} className='letter-items'>{value}</div>
+    );
+        let gameDom = this.state.gameArr.length > 0 && this.state.gameArr.map((value)=>
+        <div key={value.id} className='game-items'>{value.name}</div>);
+
+        let height = this.state.scrollHeight;
+        console.log(height)
         return (
             <div className="container">
                 <section className="search">this is search</section>
-                <section className="list">
-
+                <section className="list" style={{height:height}}>
+                    <aside className="letter">
+                    {letterDom}
+                    </aside>
+                    <main className="game">
+                    {gameDom}
+                    </main>
                 </section>
             </div>
         )
