@@ -1,5 +1,6 @@
 import React,{Component} from 'react';
 import axios from '../../../utils/axios';
+import '../../../static/css/game/list/index.less'
 
 export default class Gamelist extends Component {
     constructor() {
@@ -39,7 +40,7 @@ export default class Gamelist extends Component {
 
     render() {
         return (
-            <div className="contaner">
+            <div className="container">
                 <section className="search">this is search</section>
                 <section className="list">
 
