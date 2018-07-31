@@ -12,16 +12,15 @@ export default class Index extends Component {
     }
 
     init() {
-        // this.getData();
-        fetch('http://cdt0-wxmn.taoshouyou.com/indexpage/index/index').then(function(res) {
-            console.log(res);
-        })
+        this.getData();
+        // fetch('http://cdt0-wxmn.taoshouyou.com/indexpage/index/index').then(function(res) {
+        //     console.log(res);
+        // })
     }
 
     getData() {
         axios({
-            baseURL:'/api',
-            url:"/indexpage/index/index",
+            url:"api/indexpage/index/index",
             method:'get',
             data:{
                 a:1

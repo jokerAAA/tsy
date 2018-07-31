@@ -95,7 +95,11 @@
   "proxy" : {
     "/api" : {
       "target" : "http://cdt0-wxmn.taoshouyou.com" ,
-      "changeOrigin" : true
+      "changeOrigin" : true ,
+      "secure": false,    
+      "pathRewrite": {  
+              "^/api": "/"  
+          }
     }
   }
   
