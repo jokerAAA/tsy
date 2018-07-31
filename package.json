@@ -36,6 +36,7 @@
     "react": "^15.6.0",
     "react-dev-utils": "^5.0.1",
     "react-dom": "^15.6.0",
+    "react-router-dom": "^4.3.1",
     "resolve": "1.6.0",
     "style-loader": "0.19.0",
     "sw-precache-webpack-plugin": "0.11.4",
@@ -92,15 +93,14 @@
   "eslintConfig": {
     "extends": "react-app"
   },
-  "proxy" : {
-    "/api" : {
-      "target" : "http://cdt0-wxmn.taoshouyou.com" ,
-      "changeOrigin" : true ,
-      "secure": false,    
-      "pathRewrite": {  
-              "^/api": "/"  
-          }
+  "proxy": {
+    "/api": {
+      "target": "http://cdt0-wxmn.taoshouyou.com",
+      "changeOrigin": true,
+      "secure": false,
+      "pathRewrite": {
+        "^/api": "/"
+      }
     }
   }
-  
 }

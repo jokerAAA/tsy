@@ -3,7 +3,7 @@ import axios from '../../utils/axios';
 
 import config from '../../utils/api';
 
-const indexApi = config.api.index;
+
 
 export default class Index extends Component {
     constructor() {
