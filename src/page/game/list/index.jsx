@@ -21,7 +21,6 @@ export default class Gamelist extends Component {
         const goodsid = this.state.goodsid;
         const letter = this.state.letter ;
         this.getData(goodsid,letter);
-        
     }
 
     componentDidMount() {
@@ -29,7 +28,8 @@ export default class Gamelist extends Component {
     }
 
     setHeight() {
-        let height = window.screen.height - 44 ;
+        let search = this.refs.search.clientHeight || 44;
+        let height = window.screen.height - search ;
         this.setState({
             scrollHeight: height
         })
@@ -39,7 +39,6 @@ export default class Gamelist extends Component {
         const that = this ;
         axios.get(`/api/games/list/index?goodsid=${goodsid}&letter=${letter}`)
         .then(function(res) {
-            console.log(res);
             const letterArr = res.data.data.firstLetterList ;
             const gameArr = res.data.data.gameList;
             gameArr.forEach(function(value) {
@@ -55,7 +54,6 @@ export default class Gamelist extends Component {
     }
 
     changeLetter(value) {
-        console.log(value);
         const letter = value ;
         const goodsid = this.state.goodsid ;
         this.setState({
@@ -76,10 +74,9 @@ export default class Gamelist extends Component {
         </div>);
 
         let height = this.state.scrollHeight;
-        console.log(height)
         return (
             <div className="container">
-                <section className="search">this is search</section>
+                <section className="search" ref='search'>this is search</section>
                 <section className="list" style={{height:height}}>
                     <aside className="letter">
                     {letterDom}
