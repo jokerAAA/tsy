@@ -2,6 +2,8 @@ import React,{Component} from 'react';
 import axios from '../../../utils/axios';
 import {imgHost} from '../../../utils/host';
 import '../../../static/css/game/list/index.less';
+import  {Toast} from "antd-mobile" ;
+import 'antd-mobile/dist/antd-mobile.css';
 
 export default class Gamelist extends Component {
     constructor() {
@@ -37,8 +39,10 @@ export default class Gamelist extends Component {
 
     getData(goodsid,letter) {
         const that = this ;
+        Toast.loading('',0);
         axios.get(`/api/games/list/index?goodsid=${goodsid}&letter=${letter}`)
         .then(function(res) {
+            Toast.hide();
             const letterArr = res.data.data.firstLetterList ;
             const gameArr = res.data.data.gameList;
             gameArr.forEach(function(value) {
