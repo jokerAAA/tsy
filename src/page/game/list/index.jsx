@@ -11,13 +11,16 @@ export default class Gamelist extends Component {
             gameArr : [] ,
             letter : 'hot' ,
             goodsid : 1 ,
+            activeLetter:'hot',
             scrollHeight : 600
         }
         this.init();
     }
 
     init() {
-        this.getData();
+        const goodsid = this.state.goodsid;
+        const letter = this.state.letter ;
+        this.getData(goodsid,letter);
         
     }
 
@@ -32,15 +35,11 @@ export default class Gamelist extends Component {
         })
     }
 
-    getData() {
+    getData(goodsid,letter) {
         const that = this ;
-        const goodsid = this.state.goodsid;
-        const letter = this.state.letter ;
-        axios.get('/api/games/list/index',{
-            goodsid : goodsid ,
-            letter :letter
-        })
+        axios.get(`/api/games/list/index?goodsid=${goodsid}&letter=${letter}`)
         .then(function(res) {
+            console.log(res);
             const letterArr = res.data.data.firstLetterList ;
             const gameArr = res.data.data.gameList;
             gameArr.forEach(function(value) {
@@ -55,9 +54,20 @@ export default class Gamelist extends Component {
         })
     }
 
+    changeLetter(value) {
+        console.log(value);
+        const letter = value ;
+        const goodsid = this.state.goodsid ;
+        this.setState({
+            activeLetter:letter
+        })
+        this.getData(goodsid,letter);
+    }
+
     render() {
+        const that = this ;
         let letterDom = this.state.letterArr.length > 0 && this.state.letterArr.map((value)=>
-        <div key={value} className='letter-items'>{value == 'hot' ? '热' : value}</div>
+        <div key={value} className={that.state.activeLetter == value ? 'active-letter letter-items' : 'letter-items'} onClick={this.changeLetter.bind(this,value)}>{value == 'hot' ? '热' : value}</div>
     );
         let gameDom = this.state.gameArr.length > 0 && this.state.gameArr.map((value)=>
         <div key={value.id} className='game-items'>
