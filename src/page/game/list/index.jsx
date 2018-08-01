@@ -2,7 +2,7 @@ import React,{Component} from 'react';
 import axios from '../../../utils/axios';
 import {imgHost} from '../../../utils/host';
 import '../../../static/css/game/list/index.less';
-import  {Toast} from "antd-mobile" ;
+
 
 
 export default class Gamelist extends Component {
@@ -64,16 +64,21 @@ export default class Gamelist extends Component {
         this.getData(goodsid,letter);
     }
 
+    goList(gameid) {
+        console.log(this.props);
+        this.props.history.push(`/goods/list?gameid=${gameid}&goodsid=1`)
+    }
+
     render() {
         const that = this ;
         let letterDom = this.state.letterArr.length > 0 && this.state.letterArr.map((value)=>
         <div key={value} className={that.state.activeLetter == value ? 'active-letter letter-items' : 'letter-items'} onClick={this.changeLetter.bind(this,value)}>{value == 'hot' ? '热' : value}</div>
     );
         let gameDom = this.state.gameArr.length > 0 && this.state.gameArr.map((value)=>
-        <div key={value.id} className='game-items'>
-            <img className="game-items-img" src={value.pic} alt=""/>
-            <div className="game-items-text">{value.name}</div>
-        </div>);
+            <div className='game-items' key={value.id} onClick={this.goList.bind(this,value.id)}>
+                <img className="game-items-img" src={value.pic} alt=""/>
+                <div className="game-items-text">{value.name}</div>
+            </div>);
 
         let height = this.state.scrollHeight;
         return (

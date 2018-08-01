@@ -12,9 +12,6 @@ export default class Index extends Component {
 
     init() {
         this.getData();
-        // fetch('http://cdt0-wxmn.taoshouyou.com/indexpage/index/index').then(function(res) {
-        //     console.log(res);
-        // })
     }
 
     getData() {
