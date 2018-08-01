@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
 import axios from '../../../utils/axios';
-import '../../../static/css/game/list/index.less'
+import {imgHost} from '../../../utils/host';
+import '../../../static/css/game/list/index.less';
 
 export default class Gamelist extends Component {
     constructor() {
@@ -25,7 +26,7 @@ export default class Gamelist extends Component {
     }
 
     setHeight() {
-        let height = window.screen.height - 30 ;
+        let height = window.screen.height - 44 ;
         this.setState({
             scrollHeight: height
         })
@@ -41,7 +42,10 @@ export default class Gamelist extends Component {
         })
         .then(function(res) {
             const letterArr = res.data.data.firstLetterList ;
-            const gameArr = res.data.data.gameList ;
+            const gameArr = res.data.data.gameList;
+            gameArr.forEach(function(value) {
+                value.pic = imgHost + value.pic ;
+            })
             that.setState({
                 letterArr : letterArr ,
                 gameArr : gameArr 
@@ -53,10 +57,13 @@ export default class Gamelist extends Component {
 
     render() {
         let letterDom = this.state.letterArr.length > 0 && this.state.letterArr.map((value)=>
-        <div key={value} className='letter-items'>{value}</div>
+        <div key={value} className='letter-items'>{value == 'hot' ? '热' : value}</div>
     );
         let gameDom = this.state.gameArr.length > 0 && this.state.gameArr.map((value)=>
-        <div key={value.id} className='game-items'>{value.name}</div>);
+        <div key={value.id} className='game-items'>
+            <img className="game-items-img" src={value.pic} alt=""/>
+            <div className="game-items-text">{value.name}</div>
+        </div>);
 
         let height = this.state.scrollHeight;
         console.log(height)

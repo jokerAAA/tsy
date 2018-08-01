@@ -4,7 +4,9 @@
 }
 
 .search {
-    height:30px;
+    height:44px;
+    line-height: 44px;
+    text-align: center;
 }
 
 .list {
@@ -12,10 +14,11 @@
     height:calc(100% - 30px);
     text-align: center;
     background:#fff;
+    color:#333;
 }
 
 .letter {
-    width:50px;
+    width:54px;
     overflow-x:hidden;
     overflow-y:auto;
 }
@@ -25,14 +28,17 @@
 }
 
 .letter-items {
-    height:30px;
-    line-height: 30px;
+    height:40px;
+    line-height: 40px;
+    background:#f2f3f6;
+    text-align: center;
 }
 
 .game {
     flex:1;
     overflow-x:hidden;
     overflow-y:auto;
+    text-align: left;
 }
 
 .game::-webkit-scrollbar {
@@ -42,4 +48,20 @@
 .game-items {
     height:60px;
     line-height: 60px;
+    display: flex;
+    padding:7px 12px;
+    &-img {
+        height:44px;
+        width:44px;
+        border-radius: 6px;
+        margin-right:10px;
+    }
+
+    &-text {
+        font-size: 15px;
+        overflow:hidden;
+        text-overflow: ellipsis;
+        word-break: break-all;
+        line-height: 46px;
+    }
 }

@@ -1,7 +1,6 @@
 import React,{Component} from "react";
 import axios from '../../utils/axios';
 
-import config from '../../utils/api';
 
 
 
