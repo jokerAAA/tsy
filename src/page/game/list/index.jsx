@@ -1,7 +1,10 @@
 import React,{Component} from 'react';
 import axios from '../../../utils/axios';
 import {imgHost} from '../../../utils/host';
+
 import '../../../static/css/game/list/index.less';
+
+import Header from '../../../components/header/header';
 
 
 
@@ -30,8 +33,8 @@ export default class Gamelist extends Component {
     }
 
     setHeight() {
-        let search = this.refs.search.clientHeight || 44;
-        let height = window.screen.height - search ;
+        let header = this.refs.header.clientHeight || 44;
+        let height = window.screen.height - header ;
         this.setState({
             scrollHeight: height
         })
@@ -84,6 +87,7 @@ export default class Gamelist extends Component {
         return (
             <div className="container">
                 <section className="search" ref='search'>this is search</section>
+                <Header ref='header' title='游戏列表' />
                 <section className="list" style={{height:height}}>
                     <aside className="letter">
                     {letterDom}
